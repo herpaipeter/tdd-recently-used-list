@@ -20,4 +20,10 @@ public class RecentlyUsedListTest {
         assertThrowsExactly(InvalidListElement.class, () -> list.add(""));
     }
 
+    @Test
+    void add_string_list_size_should_be_one() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("string");
+        assertEquals(1, list.size());
+    }
 }
