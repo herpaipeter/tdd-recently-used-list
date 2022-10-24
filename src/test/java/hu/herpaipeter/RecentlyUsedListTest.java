@@ -1,5 +1,6 @@
 package hu.herpaipeter;
 
+import hu.herpaipeter.RecentlyUsedList.InvalidListElement;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,4 +12,12 @@ public class RecentlyUsedListTest {
         RecentlyUsedList list = new RecentlyUsedList();
         assertEquals(0, list.size());
     }
+
+    @Test
+    void add_null_or_empty_string_throws_exception() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        assertThrowsExactly(InvalidListElement.class, () -> list.add(null));
+        assertThrowsExactly(InvalidListElement.class, () -> list.add(""));
+    }
+
 }
