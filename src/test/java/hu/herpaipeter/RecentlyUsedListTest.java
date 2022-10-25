@@ -33,4 +33,20 @@ public class RecentlyUsedListTest {
         list.add("string");
         assertEquals("string", list.first());
     }
+
+    @Test
+    void add_two_element_the_most_recently_added_should_be_the_first() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element one");
+        list.add("element two");
+        assertEquals("element two", list.first());
+    }
+
+    @Test
+    void add_two_element_the_least_recently_added_should_be_the_last() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element one");
+        list.add("element two");
+        assertEquals("element one", list.last());
+    }
 }
