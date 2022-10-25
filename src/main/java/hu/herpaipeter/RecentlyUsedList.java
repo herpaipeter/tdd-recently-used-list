@@ -24,6 +24,8 @@ public class RecentlyUsedList {
     }
 
     public String find(int i) {
+        if (size <= i)
+            throw new IndexOutOfBoundsException();
         return 0 < size ? elements[size - i - 1] : "";
     }
 

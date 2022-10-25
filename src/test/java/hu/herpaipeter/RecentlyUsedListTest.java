@@ -67,4 +67,13 @@ public class RecentlyUsedListTest {
         list.add("element three");
         assertEquals("element two", list.find(1));
     }
+
+    @Test
+    void find_index_out_of_bound_throws_exception() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element one");
+        list.add("element two");
+        list.add("element three");
+        assertThrowsExactly(IndexOutOfBoundsException.class, () -> list.find(3));
+    }
 }
