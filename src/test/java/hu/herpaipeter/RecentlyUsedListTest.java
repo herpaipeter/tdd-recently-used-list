@@ -26,4 +26,11 @@ public class RecentlyUsedListTest {
         list.add("string");
         assertEquals(1, list.size());
     }
+
+    @Test
+    void most_recently_added_should_be_the_first() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("string");
+        assertEquals("string", list.first());
+    }
 }
