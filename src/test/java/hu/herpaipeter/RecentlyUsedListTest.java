@@ -49,4 +49,22 @@ public class RecentlyUsedListTest {
         list.add("element two");
         assertEquals("element one", list.last());
     }
+
+    @Test
+    void find_by_index_0_should_return_the_first_element() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element one");
+        list.add("element two");
+        list.add("element three");
+        assertEquals("element three", list.find(0));
+    }
+
+    @Test
+    void find_by_index_1_should_return_the_second_element() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element one");
+        list.add("element two");
+        list.add("element three");
+        assertEquals("element two", list.find(1));
+    }
 }

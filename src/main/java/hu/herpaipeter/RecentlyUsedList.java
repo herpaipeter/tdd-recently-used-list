@@ -23,6 +23,10 @@ public class RecentlyUsedList {
         return 0 < size ? elements[0] : "";
     }
 
+    public String find(int i) {
+        return 0 < size ? elements[size - i - 1] : "";
+    }
+
     public static class InvalidListElement extends RuntimeException {
     }
 
