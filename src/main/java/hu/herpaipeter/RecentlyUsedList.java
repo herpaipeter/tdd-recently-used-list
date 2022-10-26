@@ -14,16 +14,26 @@ public class RecentlyUsedList {
     public void add(String elem) {
         if (elem == null || elem.isEmpty())
             throw new InvalidListElementException();
-        if (!find(elem))
+        int index = find(elem);
+        if (-1 == index)
             elements[size++] = elem;
+        else
+            moveToTop(index);
     }
 
-    private boolean find(String elem) {
-        boolean found = false;
+    private void moveToTop(int index) {
+        String element = elements[index];
+        if (size() - 1 - index >= 0)
+            System.arraycopy(elements, index + 1, elements, index, size() - 1 - index);
+        elements[size() - 1] = element;
+    }
+
+    private int find(String elem) {
+        int foundIndex = -1;
         for (int i = 0; i < size; i++)
             if (elements[i].equals(elem))
-                found = true;
-        return found;
+                foundIndex = i;
+        return foundIndex;
     }
 
     public String first() {

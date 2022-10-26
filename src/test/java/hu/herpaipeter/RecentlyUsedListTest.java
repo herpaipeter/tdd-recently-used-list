@@ -103,4 +103,13 @@ public class RecentlyUsedListTest {
         list.add("element");
         assertEquals(2, list.size());
     }
+
+    @Test
+    void already_existing_should_be_the_first() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element");
+        list.add("element two");
+        list.add("element");
+        assertEquals("element", list.first());
+    }
 }
