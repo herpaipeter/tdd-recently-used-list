@@ -1,6 +1,7 @@
 package hu.herpaipeter;
 
-import hu.herpaipeter.RecentlyUsedList.InvalidListElement;
+import hu.herpaipeter.RecentlyUsedList.EmptyListException;
+import hu.herpaipeter.RecentlyUsedList.InvalidListElementException;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,8 +17,8 @@ public class RecentlyUsedListTest {
     @Test
     void add_null_or_empty_string_throws_exception() {
         RecentlyUsedList list = new RecentlyUsedList();
-        assertThrowsExactly(InvalidListElement.class, () -> list.add(null));
-        assertThrowsExactly(InvalidListElement.class, () -> list.add(""));
+        assertThrowsExactly(InvalidListElementException.class, () -> list.add(null));
+        assertThrowsExactly(InvalidListElementException.class, () -> list.add(""));
     }
 
     @Test
@@ -75,5 +76,13 @@ public class RecentlyUsedListTest {
         list.add("element two");
         list.add("element three");
         assertThrowsExactly(IndexOutOfBoundsException.class, () -> list.find(3));
+        assertThrowsExactly(IndexOutOfBoundsException.class, () -> list.find(-1));
+    }
+
+    @Test
+    void first_last_on_empty_list_throws_exception() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        assertThrowsExactly(EmptyListException.class, list::first);
+        assertThrowsExactly(EmptyListException.class, list::last);
     }
 }

@@ -11,25 +11,33 @@ public class RecentlyUsedList {
 
     public void add(String elem) {
         if (elem == null || elem.isEmpty())
-            throw new InvalidListElement();
+            throw new InvalidListElementException();
         elements[size++] = elem;
     }
 
     public String first() {
-        return 0 < size ? elements[size - 1] : "";
+        if (0 == size())
+            throw new EmptyListException();
+        return elements[size - 1];
     }
 
     public String last() {
-        return 0 < size ? elements[0] : "";
+        if (0 == size())
+            throw new EmptyListException();
+        return elements[0];
     }
 
     public String find(int i) {
-        if (size <= i)
+        if (0 == size())
+            throw new EmptyListException();
+        if (i < 0 || size <= i)
             throw new IndexOutOfBoundsException();
-        return 0 < size ? elements[size - i - 1] : "";
+        return elements[size - i - 1];
     }
 
-    public static class InvalidListElement extends RuntimeException {
+    public static class InvalidListElementException extends RuntimeException {
     }
 
+    public static class EmptyListException extends RuntimeException {
+    }
 }
