@@ -1,5 +1,7 @@
 package hu.herpaipeter;
 
+import java.util.Arrays;
+
 public class RecentlyUsedList {
 
     int size = 0;
@@ -12,7 +14,14 @@ public class RecentlyUsedList {
     public void add(String elem) {
         if (elem == null || elem.isEmpty())
             throw new InvalidListElementException();
-        elements[size++] = elem;
+        if (!find(elem))
+            elements[size++] = elem;
+    }
+
+    private boolean find(String elem) {
+        if (0 == size())
+            return false;
+        return first().equals(elem);
     }
 
     public String first() {

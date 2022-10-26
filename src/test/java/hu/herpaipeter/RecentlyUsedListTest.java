@@ -85,4 +85,13 @@ public class RecentlyUsedListTest {
         assertThrowsExactly(EmptyListException.class, list::first);
         assertThrowsExactly(EmptyListException.class, list::last);
     }
+
+    @Test
+    void items_should_be_unique_same_items_count_once() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element");
+        list.add("element");
+        list.add("element");
+        assertEquals(1, list.size());
+    }
 }
