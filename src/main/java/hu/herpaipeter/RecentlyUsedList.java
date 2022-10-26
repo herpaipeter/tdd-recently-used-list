@@ -19,9 +19,11 @@ public class RecentlyUsedList {
     }
 
     private boolean find(String elem) {
-        if (0 == size())
-            return false;
-        return first().equals(elem);
+        boolean found = false;
+        for (int i = 0; i < size; i++)
+            if (elements[i].equals(elem))
+                found = true;
+        return found;
     }
 
     public String first() {

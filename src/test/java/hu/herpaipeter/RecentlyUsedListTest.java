@@ -94,4 +94,13 @@ public class RecentlyUsedListTest {
         list.add("element");
         assertEquals(1, list.size());
     }
+
+    @Test
+    void items_should_be_unique_same_but_not_following() {
+        RecentlyUsedList list = new RecentlyUsedList();
+        list.add("element");
+        list.add("element two");
+        list.add("element");
+        assertEquals(2, list.size());
+    }
 }
