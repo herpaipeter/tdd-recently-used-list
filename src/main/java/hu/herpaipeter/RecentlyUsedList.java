@@ -1,7 +1,5 @@
 package hu.herpaipeter;
 
-import java.util.Arrays;
-
 public class RecentlyUsedList {
 
     int size = 0;
@@ -30,7 +28,7 @@ public class RecentlyUsedList {
 
     private int find(String elem) {
         int foundIndex = -1;
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size && foundIndex == -1; i++)
             if (elements[i].equals(elem))
                 foundIndex = i;
         return foundIndex;
