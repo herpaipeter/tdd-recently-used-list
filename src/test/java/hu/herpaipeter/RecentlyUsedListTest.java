@@ -1,6 +1,7 @@
 package hu.herpaipeter;
 
 import hu.herpaipeter.RecentlyUsedList.EmptyListException;
+import hu.herpaipeter.RecentlyUsedList.InvalidCapacityException;
 import hu.herpaipeter.RecentlyUsedList.InvalidListElementException;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -117,5 +118,11 @@ public class RecentlyUsedListTest {
     void constructor_capacity() {
         RecentlyUsedList list = new RecentlyUsedList(10);
         assertEquals(10, list.getCapacity());
+    }
+
+    @Test
+    void constructor_capacity_less_than_one_throws_exception() {
+        assertThrowsExactly(InvalidCapacityException.class, () -> new RecentlyUsedList(0));
+        assertThrowsExactly(InvalidCapacityException.class, () -> new RecentlyUsedList(-1));
     }
 }

@@ -11,6 +11,8 @@ public class RecentlyUsedList {
     }
 
     public RecentlyUsedList(int capacity) {
+        if (capacity < 1)
+            throw new InvalidCapacityException();
         this.capacity = capacity;
         elements = new String[capacity];
     }
@@ -72,5 +74,8 @@ public class RecentlyUsedList {
     }
 
     public static class EmptyListException extends RuntimeException {
+    }
+
+    public static class InvalidCapacityException extends RuntimeException {
     }
 }
