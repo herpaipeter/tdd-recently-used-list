@@ -28,6 +28,11 @@ public class RecentlyUsedList {
     public void add(String elem) {
         if (elem == null || elem.isEmpty())
             throw new InvalidListElementException();
+        if (capacity <= size) {
+            System.arraycopy(elements, 1, elements, 0, size() - 1);
+            elements[size - 1] = null;
+            size--;
+        }
         int index = find(elem);
         if (-1 == index)
             elements[size++] = elem;

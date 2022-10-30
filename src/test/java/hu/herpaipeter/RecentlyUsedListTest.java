@@ -125,4 +125,15 @@ public class RecentlyUsedListTest {
         assertThrowsExactly(InvalidCapacityException.class, () -> new RecentlyUsedList(0));
         assertThrowsExactly(InvalidCapacityException.class, () -> new RecentlyUsedList(-1));
     }
+
+    @Test
+    void if_size_more_than_capacity_least_recently_should_shift_out() {
+        RecentlyUsedList list = new RecentlyUsedList(2);
+        list.add("element on");
+        list.add("element two");
+        list.add("element three");
+        assertEquals("element three", list.first());
+        assertEquals("element two", list.last());
+        assertEquals(2, list.size());
+    }
 }
