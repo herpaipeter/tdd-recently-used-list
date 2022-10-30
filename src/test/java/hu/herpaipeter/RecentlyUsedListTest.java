@@ -112,4 +112,10 @@ public class RecentlyUsedListTest {
         list.add("element");
         assertEquals("element", list.first());
     }
+
+    @Test
+    void constructor_capacity() {
+        RecentlyUsedList list = new RecentlyUsedList(10);
+        assertEquals(10, list.getCapacity());
+    }
 }

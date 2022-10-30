@@ -3,11 +3,25 @@ package hu.herpaipeter;
 public class RecentlyUsedList {
 
     int size = 0;
-    String[] elements = new String[100];
+    int capacity = 100;
+    String[] elements;
+
+    public RecentlyUsedList() {
+        elements = new String[this.capacity];
+    }
+
+    public RecentlyUsedList(int capacity) {
+        this.capacity = capacity;
+        elements = new String[capacity];
+    }
 
     public int size() {
         return size;
     }
+    public int getCapacity() {
+        return capacity;
+    }
+
 
     public void add(String elem) {
         if (elem == null || elem.isEmpty())
