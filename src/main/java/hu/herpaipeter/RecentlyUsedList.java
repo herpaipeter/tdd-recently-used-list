@@ -2,12 +2,15 @@ package hu.herpaipeter;
 
 public class RecentlyUsedList {
 
+    private final static int DEFAULT_CAPACITY = 100;
+
     int size = 0;
-    int capacity = 100;
+    final int capacity;
     String[] elements;
 
     public RecentlyUsedList() {
-        elements = new String[this.capacity];
+        capacity = DEFAULT_CAPACITY;
+        elements = new String[capacity];
     }
 
     public RecentlyUsedList(int capacity) {
